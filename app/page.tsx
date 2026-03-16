@@ -49,7 +49,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="relative z-10 w-full px-4 pb-8 pt-20">
           <div className="mx-auto max-w-lg">
-            <p className="text-base text-sky-blue-light font-semibold drop-shadow-sm">
+            <p className="text-base text-gray-900 font-semibold drop-shadow-sm">
               Kalimera! ☀️
             </p>
             <h1 className="mt-2 text-3xl font-bold leading-tight text-white drop-shadow-md">

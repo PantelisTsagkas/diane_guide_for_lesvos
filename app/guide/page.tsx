@@ -1,14 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Header from "../components/Header";
 import CategoryTabs from "../components/CategoryTabs";
 import GuideCard from "../components/GuideCard";
 import { guideSections } from "../data/guide";
 
+const LesvosMap = dynamic(() => import("../components/LesvosMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-[220px] rounded-2xl border border-gray-200 bg-gray-100 animate-pulse" />
+  ),
+});
+
 export default function GuidePage() {
   const [activeSection, setActiveSection] = useState(guideSections[0].id);
   const section = guideSections.find((s) => s.id === activeSection)!;
+
+  const allMappableEntries = guideSections.flatMap((s) =>
+    s.entries.filter((e) => e.coordinates)
+  );
 
   return (
     <div className="flex flex-col">
@@ -21,6 +33,13 @@ export default function GuidePage() {
       />
 
       <div className="px-4 pt-5 pb-8 mx-auto w-full max-w-lg">
+        <div className="mb-5">
+          <h3 className="text-sm font-semibold text-deep-blue mb-2">
+            Island map
+          </h3>
+          <LesvosMap entries={allMappableEntries} />
+        </div>
+
         <CategoryTabs
           categories={guideSections.map(({ id, label, emoji }) => ({
             id,

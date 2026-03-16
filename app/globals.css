@@ -108,3 +108,12 @@ body {
 .accordion-content > div {
   overflow: hidden;
 }
+
+/* Leaflet map - custom markers */
+.leaflet-container {
+  font-family: inherit;
+}
+.custom-marker {
+  background: none !important;
+  border: none !important;
+}

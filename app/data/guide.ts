@@ -3,6 +3,8 @@ export interface GuideEntry {
   title: string;
   emoji: string;
   description: string;
+  /** Optional coordinates for map display [lat, lng] */
+  coordinates?: [number, number];
 }
 
 export interface GuideSection {
@@ -24,6 +26,7 @@ export const guideSections: GuideSection[] = [
         emoji: "🏰",
         description:
           "A stunning medieval castle perched atop the picturesque village of Molyvos. Walk through the cobblestone streets, browse artisan shops, and enjoy breathtaking sunset views from the castle walls. The village below is one of the most beautiful in all of Greece.",
+        coordinates: [39.3697, 26.1753],
       },
       {
         id: "petrified-forest",
@@ -31,6 +34,7 @@ export const guideSections: GuideSection[] = [
         emoji: "🌳",
         description:
           "A UNESCO Global Geopark and one of the most important natural monuments in the world. Explore fossilized trees that are 15–20 million years old. The main park is near Sigri, with a wonderful museum explaining the geological history.",
+        coordinates: [39.2133, 25.8533],
       },
       {
         id: "sigri",
@@ -38,6 +42,7 @@ export const guideSections: GuideSection[] = [
         emoji: "🏖️",
         description:
           "A tranquil fishing village at the western tip of Lesvos. Sigri has a charming harbour, a small Ottoman castle, and excellent uncrowded beaches. It's also a popular spot for windsurfing and kitesurfing.",
+        coordinates: [39.2133, 25.8533],
       },
       {
         id: "skala-eresou",
@@ -45,6 +50,7 @@ export const guideSections: GuideSection[] = [
         emoji: "🌊",
         description:
           "A vibrant beach town with a long sandy shore and a laid-back atmosphere. Known as the birthplace of the ancient poet Sappho. Great tavernas line the waterfront, and the sunsets here are unforgettable.",
+        coordinates: [39.1356, 25.9333],
       },
       {
         id: "plomari",
@@ -52,6 +58,7 @@ export const guideSections: GuideSection[] = [
         emoji: "🥃",
         description:
           "This charming coastal town is the ouzo-making capital of Greece. Visit distilleries like Barbayiannis or Plomari Ouzo, stroll the old quarter, and enjoy fresh seafood by the harbour. Don't miss the pebble beach of Agios Isidoros nearby.",
+        coordinates: [39.0344, 26.3567],
       },
       {
         id: "thermi",
@@ -59,6 +66,7 @@ export const guideSections: GuideSection[] = [
         emoji: "♨️",
         description:
           "Lesvos is famous for its natural thermal springs. The springs at Thermi (east coast) and Eftalou (near Molyvos) have been used since antiquity. The mineral-rich waters are said to help with skin and joint conditions. A wonderfully relaxing experience!",
+        coordinates: [39.1667, 26.5333],
       },
       {
         id: "mytilene",
@@ -66,6 +74,7 @@ export const guideSections: GuideSection[] = [
         emoji: "🏘️",
         description:
           "The island's capital and main port. Explore the impressive Fortress of Mytilene, the Archaeological Museum, and the lively harbour promenade. The town has excellent restaurants, cafés, and shopping along Ermou Street.",
+        coordinates: [39.1043, 26.2765],
       },
     ],
   },
@@ -178,6 +187,7 @@ export const guideSections: GuideSection[] = [
         emoji: "✈️",
         description:
           "Odysseas Elytis Airport is located 8 km south of Mytilene town. There are direct flights from Athens (about 45 minutes) and seasonal routes from Thessaloniki and some European cities. Taxis from the airport to town cost around €10–15.",
+        coordinates: [39.05, 26.28],
       },
       {
         id: "ferry",
@@ -185,6 +195,7 @@ export const guideSections: GuideSection[] = [
         emoji: "⛴️",
         description:
           "Ferries connect Mytilene to Piraeus (Athens), Chios, Thessaloniki, and other Aegean islands. The journey from Piraeus takes about 10–12 hours (overnight ferries are available with cabins). Book in advance during summer. The port is right in the centre of Mytilene town.",
+        coordinates: [39.1043, 26.2765],
       },
       {
         id: "car-rental",
