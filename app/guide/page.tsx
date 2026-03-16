@@ -16,6 +16,8 @@ export default function GuidePage() {
         title="Lesvos Guide"
         subtitle="Discover the best of the island"
         emoji="🗺️"
+        backgroundImage="https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?w=1200&q=80&auto=format&fit=crop"
+        imageAlt="Scenic Greek coastal village with colourful boats and blue sea"
       />
 
       <div className="px-4 pt-5 pb-8 mx-auto w-full max-w-lg">

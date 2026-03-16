@@ -9,6 +9,8 @@ export default function TipsPage() {
         title="Travel Tips"
         subtitle="Practical advice for your trip to Greece"
         emoji="💡"
+        backgroundImage="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80&auto=format&fit=crop"
+        imageAlt="Colourful Mediterranean food spread on a sunlit table"
       />
 
       <div className="px-4 pt-5 pb-8 mx-auto w-full max-w-lg">

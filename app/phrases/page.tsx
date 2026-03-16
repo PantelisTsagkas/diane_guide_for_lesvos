@@ -75,6 +75,8 @@ export default function PhrasesPage() {
         title="Greek Phrases"
         subtitle="Tap a card to flip it, tap the speaker to listen"
         emoji="📖"
+        backgroundImage="https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=80&auto=format&fit=crop"
+        imageAlt="White-washed Greek buildings with blue doors and bougainvillea"
       />
 
       <div className="px-4 pt-5 pb-6 mx-auto w-full max-w-lg">

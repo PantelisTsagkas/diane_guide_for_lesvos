@@ -1,7 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, MessageCircle, Map, ArrowRight } from "lucide-react";
 import { phraseCategories } from "./data/phrases";
 import AudioButton from "./components/AudioButton";
+
+const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80&auto=format&fit=crop";
 
 const navCards = [
   {
@@ -32,32 +36,43 @@ const quickPhrases = phraseCategories[0].phrases.slice(0, 3);
 export default function Home() {
   return (
     <div className="flex flex-col">
-      {/* Hero */}
-      <section className="relative bg-deep-blue px-4 pt-14 pb-10 text-white overflow-hidden">
-        <div className="absolute top-4 right-4 text-6xl opacity-20 select-none">
-          🏝️
-        </div>
-        <div className="mx-auto max-w-lg relative">
-          <p className="text-base text-sky-blue-light font-medium">
-            Kalimera! ☀️
-          </p>
-          <h1 className="mt-2 text-3xl font-bold leading-tight">
-            Welcome, Diane!
-          </h1>
-          <p className="mt-3 text-base leading-relaxed text-white/80">
-            Your personal guide to the beautiful island of{" "}
-            <span className="font-semibold text-warm-sand">Lesvos, Greece</span>.
-            Learn Greek phrases, discover hidden gems, and feel right at home.
-          </p>
-          <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/90 backdrop-blur-sm">
-            <span>🇬🇷</span>
-            <span>Your holiday companion</span>
+      {/* Hero with photo background */}
+      <section className="relative min-h-[340px] flex items-end overflow-hidden">
+        <Image
+          src={HERO_IMAGE}
+          alt="Turquoise Greek beach with golden sand and blue sky"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <div className="relative z-10 w-full px-4 pb-8 pt-20">
+          <div className="mx-auto max-w-lg">
+            <p className="text-base text-sky-blue-light font-semibold drop-shadow-sm">
+              Kalimera! ☀️
+            </p>
+            <h1 className="mt-2 text-3xl font-bold leading-tight text-white drop-shadow-md">
+              Welcome, Diane!
+            </h1>
+            <p className="mt-3 text-base leading-relaxed text-white/90 drop-shadow-sm">
+              Your personal guide to the beautiful island of{" "}
+              <span className="font-semibold text-warm-sand">
+                Lesvos, Greece
+              </span>
+              . Learn Greek phrases, discover hidden gems, and feel right at
+              home.
+            </p>
+            <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-sm text-white backdrop-blur-md shadow-lg">
+              <span>🇬🇷</span>
+              <span>Your holiday companion</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Navigation Cards */}
-      <section className="px-4 -mt-0 pt-6 pb-4">
+      <section className="px-4 pt-6 pb-4">
         <div className="mx-auto max-w-lg space-y-3">
           {navCards.map(({ href, icon: Icon, title, description, color }) => (
             <Link
