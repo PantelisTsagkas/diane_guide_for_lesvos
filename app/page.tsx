@@ -1,65 +1,143 @@
-import Image from "next/image";
+import Link from "next/link";
+import { BookOpen, MessageCircle, Map, ArrowRight } from "lucide-react";
+import { phraseCategories } from "./data/phrases";
+import AudioButton from "./components/AudioButton";
+
+const navCards = [
+  {
+    href: "/phrases",
+    icon: BookOpen,
+    title: "Greek Phrases",
+    description: "Learn essential words and phrases with audio pronunciation",
+    color: "bg-sky-blue",
+  },
+  {
+    href: "/tips",
+    icon: MessageCircle,
+    title: "Travel Tips",
+    description: "Practical advice for communicating and getting around",
+    color: "bg-terracotta",
+  },
+  {
+    href: "/guide",
+    icon: Map,
+    title: "Lesvos Guide",
+    description: "Discover attractions, food, culture, and transport",
+    color: "bg-olive",
+  },
+];
+
+const quickPhrases = phraseCategories[0].phrases.slice(0, 3);
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex flex-col">
+      {/* Hero */}
+      <section className="relative bg-deep-blue px-4 pt-14 pb-10 text-white overflow-hidden">
+        <div className="absolute top-4 right-4 text-6xl opacity-20 select-none">
+          🏝️
+        </div>
+        <div className="mx-auto max-w-lg relative">
+          <p className="text-base text-sky-blue-light font-medium">
+            Kalimera! ☀️
+          </p>
+          <h1 className="mt-2 text-3xl font-bold leading-tight">
+            Welcome, Diane!
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+          <p className="mt-3 text-base leading-relaxed text-white/80">
+            Your personal guide to the beautiful island of{" "}
+            <span className="font-semibold text-warm-sand">Lesvos, Greece</span>.
+            Learn Greek phrases, discover hidden gems, and feel right at home.
+          </p>
+          <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/90 backdrop-blur-sm">
+            <span>🇬🇷</span>
+            <span>Your holiday companion</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Navigation Cards */}
+      <section className="px-4 -mt-0 pt-6 pb-4">
+        <div className="mx-auto max-w-lg space-y-3">
+          {navCards.map(({ href, icon: Icon, title, description, color }) => (
+            <Link
+              key={href}
+              href={href}
+              className="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm border border-gray-100 transition-all hover:shadow-md active:scale-[0.98]"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <div
+                className={`${color} flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white`}
+              >
+                <Icon size={24} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h2 className="font-semibold text-deep-blue">{title}</h2>
+                <p className="text-sm text-gray-500 leading-snug mt-0.5">
+                  {description}
+                </p>
+              </div>
+              <ArrowRight size={18} className="shrink-0 text-gray-300" />
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Quick Phrases Preview */}
+      <section className="px-4 py-6">
+        <div className="mx-auto max-w-lg">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-lg font-bold text-deep-blue">
+              Start Here 👋
+            </h2>
+            <Link
+              href="/phrases"
+              className="text-sm font-medium text-sky-blue hover:underline"
             >
-              Learning
-            </a>{" "}
-            center.
+              See all
+            </Link>
+          </div>
+          <div className="space-y-2.5">
+            {quickPhrases.map((phrase) => (
+              <div
+                key={phrase.id}
+                className="flex items-center gap-3 rounded-xl bg-white p-3.5 shadow-sm border border-gray-100"
+              >
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-deep-blue text-sm">
+                    {phrase.english}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-0.5">
+                    <span className="font-medium text-gray-700">
+                      {phrase.greek}
+                    </span>
+                    {" · "}
+                    <span className="italic">{phrase.transliteration}</span>
+                  </p>
+                </div>
+                <AudioButton
+                  text={phrase.greek}
+                  size="sm"
+                  label={`Listen to ${phrase.greek}`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fun Fact */}
+      <section className="px-4 pb-8">
+        <div className="mx-auto max-w-lg rounded-2xl bg-warm-sand/60 p-5 border border-warm-sand">
+          <p className="text-sm font-semibold text-terracotta mb-1">
+            🫒 Did you know?
+          </p>
+          <p className="text-sm leading-relaxed text-gray-700">
+            Lesvos has over <strong>11 million olive trees</strong> — that is
+            roughly half of the island covered in silvery olive groves! The local
+            olive oil is among the best in the world.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
     </div>
   );
 }
